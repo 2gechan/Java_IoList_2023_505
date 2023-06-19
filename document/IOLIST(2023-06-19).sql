@@ -11,10 +11,13 @@
  
  insert into tbl_buyer (buid, buname, butel, buaddr) 
  values ('0000000001', '홍길동', '010-1111-1111', '서울특별시');
+ 
  insert into tbl_buyer (buid, buname, butel, buaddr) 
  values ('0000000002', '성춘향', '010-2222-2222', '전라북도 남원시');
+ 
  insert into tbl_buyer (buid, buname, butel, buaddr) 
  values ('0000000003', '이몽룡', '010-3333-3333', '광주광역시');
+ 
  insert into tbl_buyer (buid, buname, butel, buaddr) 
  values ('0000000004', '이길용', '010-4444-4444', '부산광역시');
  
@@ -67,5 +70,30 @@
  */
  select 30 + 40; -- 표준 SQL 문법
  select * from dual;
- select 30 + 40 from dual;
  
+ -- 사칙연산
+ select 30 + 40 from dual;
+ select 30 - 40 from dual;
+ select 30 * 40 from dual;
+ select 30 / 40 from dual;
+ 
+ -- 연산
+ select 30 + 40 + 50 + 60 from dual;
+ 
+ -- 함수를 사용한 연산
+ -- 테이블에 데이터가 몇개 있느냐?
+ select count(*) from tbl_buyer;
+ 
+ -- 이름에 길 문자열이 포함된 고객이 몇명이냐
+ select count(*) from tbl_buyer where buname like '%길%';
+ 
+ -- 현재 저장된 데이터 중에서 가장 큰 buid 값은 얼마냐
+ select max(buid) from tbl_buyer;
+ 
+ select min(buid) from tbl_buyer;
+ 
+ update tbl_buyer set
+ buName	= buName,
+ buTel	= buTel,
+ buAddr	= buAddr
+ where buId	= buId;
