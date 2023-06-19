@@ -64,3 +64,5 @@
  insert into tbl_iolist(ioDate, ioTime, iobuid, iopcode, ioquan, ioprice)
  values('2023-06-16', '11:32:00', '0000000001', '0000000000001', 10, 12000);
  select * from tbl_iolist;
+ 
+ commit;
