@@ -195,6 +195,7 @@ public class BuyerServiceImplV1 implements BuyerService {
 				HelpMessage.ERROR("고객ID를 확인하세요");
 				System.out.println("고객찾기를 그만 두시겠습니까?(Y/N");
 				String yesNo = scan.nextLine();
+				
 				if (yesNo.equals("Y"))
 					return null;
 			} else {
