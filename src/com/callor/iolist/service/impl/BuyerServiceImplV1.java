@@ -31,8 +31,8 @@ public class BuyerServiceImplV1 implements BuyerService {
 	// 문법 오류를 발생하기 때문에 반드시 초기화 해야한다.
 	// final 로 선언된 객체는 반드시 현재 클래스의 생성자에서
 	// 초기화를 해주어야 한다.
-	protected final BuyerDao buyerDao;
-	protected final Scanner scan;
+	protected BuyerDao buyerDao;
+	protected Scanner scan;
 
 	public BuyerServiceImplV1() {
 
