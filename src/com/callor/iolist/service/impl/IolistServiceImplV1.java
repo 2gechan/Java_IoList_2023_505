@@ -59,10 +59,10 @@ public class IolistServiceImplV1 implements IolistService {
 		System.out.printf("%s\t", iolist.ioTime);
 		
 		System.out.printf("%s\t", iolist.ioBuId);
-		System.out.printf("%s\t", "고객명");
+		System.out.printf("%s\t", buyerDao.findById(iolist.ioBuId).buName);
 		
-		System.out.printf("%s\t", "상품코드");
-		System.out.printf("%s\t", "상품명");
+		System.out.printf("%s\t", iolist.ioPCode);
+//		System.out.printf("%s\t", productDao.findById(iolist.ioPCode).pName);	
 		
 		System.out.printf("%d\t", iolist.getIoPrice());
 		System.out.printf("%d\t", iolist.getIoQuan());
@@ -244,13 +244,25 @@ public class IolistServiceImplV1 implements IolistService {
 
 	@Override
 	public void selectByBuyer() {
-		// TODO Auto-generated method stub
+		BuyerDto buyerDto = buyerService.findByBuName();
+		if(buyerDto == null) {
+			HelpMessage.ERROR("고객정보가 없습니다");
+		} else {
+			List<IolistDto> iolists = iolistDao.selectByBuyer(buyerDto.buId);
+			this.printList(iolists);
+		}
 		
 	}
 
 	@Override
 	public void selectByProduct() {
-		// TODO Auto-generated method stub
+		ProductDto productDto = productService.findByPName();
+		if(productDto == null) {
+			HelpMessage.ERROR("상품 정보를 찾을 수 없습니다.");
+		} else {
+			List<IolistDto> iolists = iolistDao.selectByProduct(productDto.pCode);
+			this.printList(iolists);
+		}
 		
 	}
 
